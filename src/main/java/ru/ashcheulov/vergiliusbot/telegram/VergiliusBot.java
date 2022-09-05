@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -34,7 +35,8 @@ public class VergiliusBot extends TelegramLongPollingBot {
     final CallbackQueryHandler callbackQueryHandler;
 
     @Autowired
-    public VergiliusBot(MessageHandler messageHandler, CallbackQueryHandler callbackQueryHandler) {
+    public VergiliusBot(MessageHandler messageHandler, CallbackQueryHandler callbackQueryHandler, DefaultBotOptions botOptions) {
+        super(botOptions);
         this.messageHandler = messageHandler;
         this.callbackQueryHandler = callbackQueryHandler;
     }
